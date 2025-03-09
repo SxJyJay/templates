@@ -93,3 +93,21 @@ for line in lines:
                 print(f"浮点数：{num}")
             except ValueError:
                 print(f"字符串：{item}")
+
+
+# 直接以python的列表形式输入
+# ast模块就是帮助Python应用来处理抽象的语法解析的。而该模块下的literal_eval()函数：则会判断需要计算的内容计算后是不是合法的python类型，如果是则进行运算，否则就不进行运算。
+'''
+输入用例：
+[[1,3,4],
+[2,3,4],
+[6,9,8]]
+'''
+import sys
+import ast
+input = sys.stdin.read().strip()
+try:
+    matrix = ast.literal_eval(input)  # 将带[[和,的字符串安全解析为Python对象
+    print(matrix)
+except Exception as e:
+    print(f"解析失败: {e}")
